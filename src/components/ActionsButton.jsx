@@ -47,18 +47,18 @@ const ActionsButton = ({ plan, setIsOpen, isOpen, editScreen }) => {
   return (
     <>
       <button
-        className="block w-full px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+        className="flex w-full items-center gap-x-2 px-4 py-2 text-left text-red-600 hover:bg-gray-100"
         onClick={handleDeleteCard}
         type="button"
       >
-        <FaTrashAlt />
+        <FaTrashAlt /> {editScreen ?? <h1>Delete</h1>}
       </button>
       <button
-        className="block w-full px-4 py-2 text-left hover:bg-gray-100"
+        className="flex w-full items-center gap-x-2 px-4 py-2 text-left hover:bg-gray-100"
         onClick={handleGeneratePDF}
         type="button"
       >
-        <FaRegFilePdf />
+        <FaRegFilePdf /> {editScreen ?? <h1>open PDF</h1>}
       </button>
     </>
   );
