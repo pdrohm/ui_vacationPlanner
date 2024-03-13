@@ -8,7 +8,6 @@ import Layout from "../layout/Layout";
 import { PlanProvider } from "../context/PlanContext";
 import CreatePlanPage from "../pages/CreatePlanPage";
 import PlanPage from "../pages/PlanPage";
-import PdfViewerPage from "../pages/PdfViewerPage";
 import ReportPdfButton from "../components/ReportPdfButton";
 
 const MyRoutes = () => {
@@ -37,14 +36,6 @@ const MyRoutes = () => {
             element={
               <Layout>
                 <PlanPage />
-              </Layout>
-            }
-          />
-          <Route
-            path="/pdf"
-            element={
-              <Layout>
-                <PdfViewerPage />
               </Layout>
             }
           />

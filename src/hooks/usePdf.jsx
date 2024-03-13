@@ -16,6 +16,7 @@ const usePdf = () => {
         plan.title,
         plan.description || "No description provided",
         formatDateRange(plan.startDate, plan.endDate),
+        plan.participants.join(", ") || "No participants",
       ]);
 
       doc.setFontSize(24);
@@ -26,7 +27,7 @@ const usePdf = () => {
 
       doc.autoTable({
         startY: 40,
-        head: [["Title", "Description", "Date"]],
+        head: [["Title", "Description", "Date", "Participants"]],
         body: tableData,
         theme: "grid",
         styles: { textColor: "#000", fontStyle: "normal" },
@@ -41,12 +42,17 @@ const usePdf = () => {
   };
 
   const generatePDF = async (plan) => {
+    console.log(`plan`, plan);
     try {
       const doc = new jsPDF();
+      const participants = Array.isArray(plan.participants)
+        ? plan.participants.join(", ")
+        : "No participants";
       const planDetails = [
         ["Title", plan.title],
         ["Description", plan.description || "No description provided"],
         ["Date", formatDateRange(plan.startDate, plan.endDate)],
+        ["Participants", participants],
       ];
 
       doc.setFontSize(24);

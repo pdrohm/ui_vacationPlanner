@@ -5,6 +5,7 @@ import PlanContext from "../context/PlanContext";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ParticipantsInput from "./ParticipantsInput";
+import { useNavigate } from "react-router-dom";
 
 const CreatePlanForm = () => {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -12,6 +13,8 @@ const CreatePlanForm = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const selectInputRef = useRef();
+
+  const navigate = useNavigate();
 
   const { addPlan } = useContext(PlanContext);
   const {
@@ -24,14 +27,15 @@ const CreatePlanForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
       data.participants = selectedOptions.map((option) => option.value);
-      addPlan(data);
+      await addPlan(data);
       afterSubmit();
     } catch (error) {
       console.log("error", error);
     }
+    navigate("/");
   };
 
   const afterSubmit = () => {

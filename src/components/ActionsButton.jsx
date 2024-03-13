@@ -13,14 +13,7 @@ const ActionsButton = ({ plan, setIsOpen, isOpen, editScreen }) => {
     try {
       event.stopPropagation();
 
-      const planData = {
-        title: plan.title,
-        description: plan.description,
-        startDate: plan.startDate,
-        endDate: plan.endDate,
-      };
-
-      const pdfBlob = await generatePDF(planData);
+      const pdfBlob = await generatePDF(plan);
 
       const pdfUrl = URL.createObjectURL(pdfBlob);
 
