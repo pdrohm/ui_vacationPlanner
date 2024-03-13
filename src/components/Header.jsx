@@ -3,7 +3,7 @@ import defaultAvatar from "../assets/default_avatar.jpg";
 
 const Header = () => {
   return (
-    <div className="h-16 border-b flex items-center px-5 justify-between">
+    <div className="h-16 border-b flex items-center justify-between w-screen px-5 md:px-20">
       <span className="text-primary text-2xl lg:text-4xl font-semibold">
         Vacation planner
       </span>
