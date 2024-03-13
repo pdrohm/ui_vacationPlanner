@@ -43,6 +43,16 @@ export const PlanProvider = ({ children }) => {
     }
   };
 
+  const deletePlan = async (id) => {
+    try {
+      await plainVacationService.deletePlainVacation(id);
+
+      fetchPlans();
+    } catch (error) {
+      console.error("Error adding plan:", error);
+    }
+  };
+
   useEffect(() => {
     fetchPlans();
   }, []);
@@ -56,6 +66,7 @@ export const PlanProvider = ({ children }) => {
         editPlan,
         selectedPlan,
         setSelectedPlan,
+        deletePlan,
       }}
     >
       {children}

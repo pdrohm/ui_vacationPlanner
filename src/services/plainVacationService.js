@@ -38,6 +38,7 @@ const plainVacationService = {
       return response.data;
     } catch (error) {
       console.error("Error updating plain vacation:", error);
+      toast.error("Error updating plain vacation:", error);
       throw error;
     }
   },
@@ -45,8 +46,11 @@ const plainVacationService = {
   deletePlainVacation: async (id) => {
     try {
       const response = await httpClient.delete(`/vacation-plans/${id}`);
+      toast.success("Plain vacation deleted successfully");
+
       return response.data;
     } catch (error) {
+      toast.error("Error deleting plain vacation:", error);
       console.error("Error deleting plain vacation:", error);
       throw error;
     }
