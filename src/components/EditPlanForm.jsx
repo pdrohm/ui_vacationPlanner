@@ -100,7 +100,7 @@ const EditPlanForm = () => {
 
       <div className="mb-2 flex justify-between">
         <div className="flex ">
-          <ActionsButton plan={plan} />
+          <ActionsButton plan={plan} editScreen />
         </div>
         <button type="submit" className="btn">
           Update Plan

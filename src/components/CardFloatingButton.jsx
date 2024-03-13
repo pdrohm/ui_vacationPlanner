@@ -5,7 +5,6 @@ import ActionsButton from "./ActionsButton";
 
 const CardFloatingButton = ({ plan }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
 
   const toggleMenu = (event) => {
     event.stopPropagation();

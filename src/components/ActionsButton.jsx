@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import usePdf from "../hooks/usePdf";
 import PlanContext from "../context/PlanContext";
 import { FaRegFilePdf, FaTrashAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-const ActionsButton = ({ plan, setIsOpen, isOpen }) => {
+const ActionsButton = ({ plan, setIsOpen, isOpen, editScreen }) => {
   const { generatePDF } = usePdf();
   const { deletePlan } = useContext(PlanContext);
+  const navigate = useNavigate();
 
   const handleGeneratePDF = async (event) => {
     try {
@@ -32,7 +34,14 @@ const ActionsButton = ({ plan, setIsOpen, isOpen }) => {
   const handleDeleteCard = (event) => {
     event.stopPropagation();
     deletePlan(plan.id);
-    setIsOpen(!isOpen);
+
+    if (setIsOpen) {
+      setIsOpen(!isOpen);
+    }
+
+    if (editScreen) {
+      navigate("/");
+    }
   };
 
   return (
