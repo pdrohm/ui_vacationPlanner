@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { format, parseISO } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import PlanContext from "../context/PlanContext";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import CardFloatingButton from "./CardFloatingButton";
 import imageUrl from "/defaultCover.webp";
 
@@ -26,7 +28,7 @@ const Card = ({ plan }) => {
       onClick={() => handleCardClick(plan)}
     >
       <div>
-        <img
+        <LazyLoadImage
           src={imageUrl}
           alt="Planned Trip Image choosen by user"
           className="w-full rounded-md hover:scale-105"
