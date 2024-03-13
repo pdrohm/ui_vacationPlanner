@@ -3,6 +3,7 @@ import { format, parseISO } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import PlanContext from "../context/PlanContext";
 import CardFloatingButton from "./CardFloatingButton";
+import imageUrl from "/defaultCover.webp";
 
 const Card = ({ plan }) => {
   const { setSelectedPlan } = useContext(PlanContext);
@@ -19,8 +20,6 @@ const Card = ({ plan }) => {
     navigate(`/plan/${plan.id}`);
   };
 
-  const imageUrl =
-    "https://www.civitatis.com/blog/wp-content/uploads/2022/10/panoramica-rio-janeiro-brasil.jpg";
   return (
     <div
       className="flex w-full cursor-pointer flex-col items-start justify-center gap-y-2 bg-white p-6"
@@ -31,6 +30,7 @@ const Card = ({ plan }) => {
           src={imageUrl}
           alt="Planned Trip Image choosen by user"
           className="w-full rounded-md hover:scale-105"
+          loading="lazy"
         />
         <CardFloatingButton plan={plan} />
       </div>

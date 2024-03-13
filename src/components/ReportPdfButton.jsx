@@ -27,7 +27,10 @@ const ReportPdfButton = () => {
       title="PRINT A REPORT OF ALL PLANS"
       onClick={handleGeneratePDF}
     >
-      <button className="rounded-full  bg-primary p-4 font-bold   text-black hover:bg-blue-700 hover:bg-primary/65">
+      <button
+        aria-label="Open Report PDF plans button"
+        className="rounded-full  bg-primary p-4 font-bold   text-black hover:bg-blue-700 hover:bg-primary/65"
+      >
         <FaRegFilePdf />
       </button>
     </div>

@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const HomePage = () => {
-  const { plans } = useContext(PlanContext);
+  const { plans, loading } = useContext(PlanContext);
+
+  console.log(loading);
 
   const navigate = useNavigate();
 
@@ -29,11 +31,12 @@ const HomePage = () => {
         </button>
       </div>
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {plans.map((plan) => (
-          <div key={plan.id} className="h-full">
-            <Card plan={plan} />
-          </div>
-        ))}
+        {!loading &&
+          plans.map((plan) => (
+            <div key={plan.id} className="h-full">
+              <Card plan={plan} />
+            </div>
+          ))}
       </div>
     </div>
   );

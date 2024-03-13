@@ -3,12 +3,10 @@ import { useForm, Controller } from "react-hook-form";
 import EditPlanForm from "../components/EditPlanForm";
 import PlanContext from "../context/PlanContext";
 import { Helmet } from "react-helmet";
+import imageUrl from "/defaultCover.webp";
 
 const PlanPage = () => {
   const { selectedPlan } = useContext(PlanContext);
-
-  const imageUrl =
-    "https://www.civitatis.com/blog/wp-content/uploads/2022/10/panoramica-rio-janeiro-brasil.jpg";
 
   return (
     <>

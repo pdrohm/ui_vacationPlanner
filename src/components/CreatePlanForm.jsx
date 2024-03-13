@@ -64,7 +64,7 @@ const CreatePlanForm = () => {
       </div>
 
       <div>
-        <label>Date Range:</label>
+        <label htmlFor="rangeDate">Date Range:</label>
         <ReactDatePicker
           startDate={watch("startDate", null)}
           endDate={watch("endDate", null)}

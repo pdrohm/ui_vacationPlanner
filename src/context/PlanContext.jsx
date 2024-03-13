@@ -6,11 +6,13 @@ const PlanContext = createContext();
 export const PlanProvider = ({ children }) => {
   const [plans, setPlans] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState();
+  const [loading, setLoading] = useState(true);
 
   const fetchPlans = async () => {
     try {
       const plansFetched = await plainVacationService.getAllPlainVacations();
       setPlans(plansFetched);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching plans:", error);
     }
@@ -65,6 +67,7 @@ export const PlanProvider = ({ children }) => {
         selectedPlan,
         setSelectedPlan,
         deletePlan,
+        loading,
       }}
     >
       {children}
