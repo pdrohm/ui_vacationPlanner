@@ -1,17 +1,22 @@
 import React from "react";
 import defaultAvatar from "../assets/default_avatar.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
-    <div className="h-16 border-b flex items-center justify-between w-screen px-5 md:px-20">
-      <span className="text-primary text-2xl lg:text-4xl font-semibold">
+    <div className="flex h-16 w-screen items-center justify-between border-b px-5 md:px-20">
+      <span
+        className="cursor-pointer text-2xl font-semibold text-primary lg:text-4xl"
+        onClick={() => navigate("/")}
+      >
         Vacation planner
       </span>
-      <div className="w-12 container-data ml-20">
+      <div className="container-data ml-20 w-12">
         <img
           src={defaultAvatar}
           alt="Preview"
-          className="w-full h-full rounded-full"
+          className="h-full w-full rounded-full"
         />
       </div>
     </div>

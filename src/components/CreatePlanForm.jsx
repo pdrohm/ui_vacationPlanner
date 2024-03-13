@@ -56,12 +56,12 @@ const CreatePlanForm = ({ setModalOpen }) => {
       <div>
         <label>Date Range:</label>
         <ReactDatePicker
-          startDate={watch("orderStartDate", null)}
-          endDate={watch("orderEndDate", null)}
+          startDate={watch("startDate", null)}
+          endDate={watch("endDate", null)}
           selectsRange={true}
           onChange={(dates) => {
-            setValue("orderStartDate", dates[0]);
-            setValue("orderEndDate", dates[1]);
+            setValue("startDate", dates[0]);
+            setValue("endDate", dates[1]);
           }}
           dateFormat="dd MMM yyyy"
         />
