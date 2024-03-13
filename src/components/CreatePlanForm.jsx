@@ -44,68 +44,70 @@ const CreatePlanForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="plan-form">
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          id="title"
-          type="text"
-          {...register("title", { required: true })}
-        />
-      </div>
+    <div className="w-2/3 lg:w-1/5">
+      <form onSubmit={handleSubmit(onSubmit)} className="plan-form">
+        <div>
+          <label htmlFor="title">Title:</label>
+          <input
+            id="title"
+            type="text"
+            {...register("title", { required: true })}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="description">Description:</label>
-        <textarea
-          id="description"
-          {...register("description", { required: true })}
-          className="w-full"
-        />
-      </div>
+        <div>
+          <label htmlFor="description">Description:</label>
+          <textarea
+            id="description"
+            {...register("description", { required: true })}
+            className="w-full"
+          />
+        </div>
 
-      <div>
-        <label htmlFor="rangeDate">Date Range:</label>
-        <ReactDatePicker
-          startDate={watch("startDate", null)}
-          endDate={watch("endDate", null)}
-          selectsRange={true}
-          onChange={(dates) => {
-            setValue("startDate", dates[0]);
-            setValue("endDate", dates[1]);
-          }}
-          dateFormat="dd MMM yyyy"
-        />
-      </div>
+        <div>
+          <label htmlFor="rangeDate">Date Range:</label>
+          <ReactDatePicker
+            startDate={watch("startDate", null)}
+            endDate={watch("endDate", null)}
+            selectsRange={true}
+            onChange={(dates) => {
+              setValue("startDate", dates[0]);
+              setValue("endDate", dates[1]);
+            }}
+            dateFormat="dd MMM yyyy"
+          />
+        </div>
 
-      <div>
-        <label htmlFor="location">Location:</label>
-        <input
-          id="location"
-          type="text"
-          {...register("location", { required: true })}
-        />
-      </div>
+        <div>
+          <label htmlFor="location">Location:</label>
+          <input
+            id="location"
+            type="text"
+            {...register("location", { required: true })}
+          />
+        </div>
 
-      <div>
-        <label htmlFor="participants">Participants:</label>
-        <ParticipantsInput
-          control={control}
-          selectedOptions={selectedOptions}
-          setSelectedOptions={setSelectedOptions}
-          ref={selectInputRef}
-        />
-      </div>
+        <div>
+          <label htmlFor="participants">Participants:</label>
+          <ParticipantsInput
+            control={control}
+            selectedOptions={selectedOptions}
+            setSelectedOptions={setSelectedOptions}
+            ref={selectInputRef}
+          />
+        </div>
 
-      <button type="submit" className="btn">
-        Add Plan
-      </button>
-      <div className="flex flex-col border-none text-red-600">
-        {errors.title && <span>Field title is required</span>}
-        {errors.description && <span>Field description is required</span>}
-        {errors.dateRange && <span>{errors.dateRange.message}</span>}
-        {errors.location && <span>Field location is required</span>}
-      </div>
-    </form>
+        <button type="submit" className="btn">
+          Add Plan
+        </button>
+        <div className="flex flex-col border-none text-red-600">
+          {errors.title && <span>Field title is required</span>}
+          {errors.description && <span>Field description is required</span>}
+          {errors.dateRange && <span>{errors.dateRange.message}</span>}
+          {errors.location && <span>Field location is required</span>}
+        </div>
+      </form>
+    </div>
   );
 };
 
