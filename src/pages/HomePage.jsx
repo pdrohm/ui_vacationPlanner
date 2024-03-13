@@ -30,7 +30,9 @@ const HomePage = () => {
       </div>
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {plans.map((plan) => (
-          <Card key={plan.id} plan={plan} />
+          <div key={plan.id} className="h-full">
+            <Card plan={plan} />
+          </div>
         ))}
       </div>
     </div>
