@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import { format, parseISO } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import PlanContext from "../context/PlanContext";
 
 const Card = ({ plan }) => {
+  const { setSelectedPlan } = useContext(PlanContext);
   const startDate = parseISO(plan.startDate);
   const endDate = parseISO(plan.endDate);
 
   const startFormattedDate = format(startDate, "MMMM dd yy");
   const endFormattedDate = format(endDate, "MMMM dd yy");
 
+  const navigate = useNavigate();
+
+  const handleCardClick = (plan) => {
+    setSelectedPlan(plan);
+    navigate(`/plan/${plan.id}`);
+  };
+
   const imageUrl =
     "https://www.civitatis.com/blog/wp-content/uploads/2022/10/panoramica-rio-janeiro-brasil.jpg";
   return (
-    <div className="flex w-full cursor-pointer flex-col items-start justify-center gap-y-2 bg-white p-6">
+    <div
+      className="flex w-full cursor-pointer flex-col items-start justify-center gap-y-2 bg-white p-6"
+      onClick={() => handleCardClick(plan)}
+    >
       <img
         src={imageUrl}
         alt="Imagem"

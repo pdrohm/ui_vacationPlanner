@@ -16,7 +16,7 @@ const plainVacationService = {
     try {
       const response = await httpClient.post(
         "/vacation-plans",
-        plainVacationData
+        plainVacationData,
       );
       toast.success("Plain vacation created successfully");
       return response.data;
@@ -31,8 +31,10 @@ const plainVacationService = {
     try {
       const response = await httpClient.put(
         `/vacation-plans/${id}`,
-        plainVacationData
+        plainVacationData,
       );
+      toast.success("Plain vacation edited successfully");
+
       return response.data;
     } catch (error) {
       console.error("Error updating plain vacation:", error);

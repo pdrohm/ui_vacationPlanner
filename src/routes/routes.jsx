@@ -7,6 +7,7 @@ import HomePage from "../pages/HomePage";
 import Layout from "../layout/Layout";
 import { PlanProvider } from "../context/PlanContext";
 import CreatePlanPage from "../pages/CreatePlanPage";
+import PlanPage from "../pages/PlanPage";
 
 const MyRoutes = () => {
   return (
@@ -26,6 +27,14 @@ const MyRoutes = () => {
             element={
               <Layout>
                 <CreatePlanPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/plan/:id"
+            element={
+              <Layout>
+                <PlanPage />
               </Layout>
             }
           />

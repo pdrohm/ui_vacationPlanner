@@ -5,13 +5,13 @@ const PlanContext = createContext();
 
 export const PlanProvider = ({ children }) => {
   const [plans, setPlans] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState();
 
-  console.log(plans);
+  console.log(`selectedPlan`, selectedPlan);
 
   const fetchPlans = async () => {
     try {
       const plansFetched = await plainVacationService.getAllPlainVacations();
-      console.log(`plansFetched`, plansFetched);
       setPlans(plansFetched);
     } catch (error) {
       console.error("Error fetching plans:", error);
@@ -28,12 +28,36 @@ export const PlanProvider = ({ children }) => {
     }
   };
 
+  const editPlan = async (id, plan) => {
+    try {
+      const updatedPlan = await plainVacationService.editPlainVacation(
+        id,
+        plan,
+      );
+
+      setSelectedPlan(updatedPlan);
+
+      fetchPlans();
+    } catch (error) {
+      console.error("Error adding plan:", error);
+    }
+  };
+
   useEffect(() => {
     fetchPlans();
   }, []);
 
   return (
-    <PlanContext.Provider value={{ plans, fetchPlans, addPlan }}>
+    <PlanContext.Provider
+      value={{
+        plans,
+        fetchPlans,
+        addPlan,
+        editPlan,
+        selectedPlan,
+        setSelectedPlan,
+      }}
+    >
       {children}
     </PlanContext.Provider>
   );
