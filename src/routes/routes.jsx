@@ -5,21 +5,24 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomePage from "../pages/HomePage";
 import Layout from "../layout/Layout";
+import { PlanProvider } from "../context/PlanContext";
 
 const MyRoutes = () => {
   return (
     <HashRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <HomePage />
-            </Layout>
-          }
-        />
-      </Routes>
-      <ToastContainer />
+      <PlanProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Layout>
+                <HomePage />
+              </Layout>
+            }
+          />
+        </Routes>
+        <ToastContainer />
+      </PlanProvider>
     </HashRouter>
   );
 };
