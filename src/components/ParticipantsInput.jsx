@@ -44,6 +44,7 @@ const ParticipantsInput = ({
             onKeyDown={handleKeyDown}
             options={selectedOptions}
             placeholder="Type and hit enter"
+            className="w-96"
           />
         )}
       />
