@@ -10,8 +10,8 @@ const PlanPage = () => {
     "https://www.civitatis.com/blog/wp-content/uploads/2022/10/panoramica-rio-janeiro-brasil.jpg";
 
   return (
-    <div className="mx-auto flex max-w-screen-lg justify-center p-10 lg:px-0">
-      <div className="flex w-1/2 flex-col items-center justify-center gap-y-5 border">
+    <div className="mx-auto flex max-w-screen-xl justify-center">
+      <div className="flex w-full flex-col items-center justify-center gap-y-5 lg:w-1/2 lg:border-2 lg:px-0">
         <img src={imageUrl} className="w-full" />
         <EditPlanForm plan={selectedPlan} />
       </div>
