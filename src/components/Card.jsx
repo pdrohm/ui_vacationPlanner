@@ -9,8 +9,8 @@ const Card = ({ plan }) => {
   const startDate = parseISO(plan.startDate);
   const endDate = parseISO(plan.endDate);
 
-  const startFormattedDate = format(startDate, "MMMM dd yy");
-  const endFormattedDate = format(endDate, "MMMM dd yy");
+  const startFormattedDate = format(startDate, "MMM dd yy");
+  const endFormattedDate = format(endDate, "MMM dd yy");
 
   const navigate = useNavigate();
 

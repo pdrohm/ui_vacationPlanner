@@ -109,7 +109,7 @@ const EditPlanForm = () => {
         {errors.location && <span>Field location is required</span>}
       </div>
 
-      <div className="mb-2 flex justify-between px-4 lg:px-0">
+      <div className="mb-2 flex justify-between px-4 ">
         <div className="flex ">
           <ActionsButton plan={plan} editScreen />
         </div>

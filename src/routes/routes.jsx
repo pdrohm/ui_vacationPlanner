@@ -9,6 +9,7 @@ import { PlanProvider } from "../context/PlanContext";
 import CreatePlanPage from "../pages/CreatePlanPage";
 import PlanPage from "../pages/PlanPage";
 import PdfViewerPage from "../pages/PdfViewerPage";
+import ReportPdfButton from "../components/ReportPdfButton";
 
 const MyRoutes = () => {
   return (
@@ -48,6 +49,7 @@ const MyRoutes = () => {
             }
           />
         </Routes>
+        <ReportPdfButton />
         <ToastContainer />
       </PlanProvider>
     </HashRouter>

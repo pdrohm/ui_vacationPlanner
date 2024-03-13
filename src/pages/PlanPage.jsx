@@ -20,7 +20,7 @@ const PlanPage = () => {
         />
       </Helmet>
       <div className="mx-auto flex max-w-screen-xl justify-center">
-        <div className="flex w-full flex-col items-center justify-center gap-y-5 lg:w-1/2 lg:border-2 lg:px-0">
+        <div className="flex w-full flex-col items-center justify-center gap-y-5 lg:w-1/2 lg:border-2 ">
           <img src={imageUrl} className="w-full" />
           <EditPlanForm plan={selectedPlan} />
         </div>
