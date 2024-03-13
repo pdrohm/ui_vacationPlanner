@@ -4,9 +4,12 @@ import { BsThreeDots } from "react-icons/bs";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaRegFilePdf } from "react-icons/fa6";
 import PlanContext from "../context/PlanContext";
+import plainVacationService from "../services/plainVacationService";
+import { useNavigate } from "react-router-dom";
 
 const CardFloatingButton = ({ plan }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const { deletePlan } = useContext(PlanContext);
 
@@ -15,9 +18,16 @@ const CardFloatingButton = ({ plan }) => {
     setIsOpen(!isOpen);
   };
 
-  const handleDownloadPDF = (event) => {
-    event.stopPropagation();
-    // Lógica para o download do PDF
+  const handleGeneratePDF = async (event) => {
+    try {
+      event.stopPropagation();
+
+      const pdf = await plainVacationService.generatePdfPlan(plan.id, plan);
+      console.log(`pdf`, pdf.data);
+      navigate(`/pdf`, { state: { pdf: pdf.data } });
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+    }
   };
 
   const handleDeleteCard = (event) => {
@@ -45,7 +55,7 @@ const CardFloatingButton = ({ plan }) => {
           </button>
           <button
             className="block w-full px-4 py-2 text-left hover:bg-gray-100"
-            onClick={handleDownloadPDF}
+            onClick={handleGeneratePDF}
           >
             <FaRegFilePdf />
           </button>

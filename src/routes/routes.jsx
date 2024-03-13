@@ -8,6 +8,7 @@ import Layout from "../layout/Layout";
 import { PlanProvider } from "../context/PlanContext";
 import CreatePlanPage from "../pages/CreatePlanPage";
 import PlanPage from "../pages/PlanPage";
+import PdfViewerPage from "../pages/PdfViewerPage";
 
 const MyRoutes = () => {
   return (
@@ -35,6 +36,14 @@ const MyRoutes = () => {
             element={
               <Layout>
                 <PlanPage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/pdf"
+            element={
+              <Layout>
+                <PdfViewerPage />
               </Layout>
             }
           />

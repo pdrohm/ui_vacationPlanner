@@ -19,13 +19,11 @@ const EditPlanForm = () => {
     formState: { errors },
   } = useForm();
 
-  // State to manage selected start and end dates
   const [startDate, setStartDate] = useState(new Date(plan.startDate));
   const [endDate, setEndDate] = useState(new Date(plan.endDate));
 
   const onSubmit = (data) => {
     try {
-      // Update the plan with the new data
       editPlan(plan.id, data);
     } catch (error) {
       console.log("error", error);
