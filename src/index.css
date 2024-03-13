@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.plan-form {
+  @apply flex flex-col gap-y-10;
+
+  div {
+    @apply rounded-md border;
+  }
+
+  label {
+    @apply pointer-events-none absolute -translate-y-5 text-sm font-bold text-black;
+  }
+  input {
+    @apply border-none px-3 py-2 focus:outline-none;
+  }
+}
+
+.btn {
+  @apply rounded-full bg-primary px-5 py-2 text-white hover:bg-primary/65;
+}

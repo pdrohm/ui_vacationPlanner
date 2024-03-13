@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import HomePage from "../pages/HomePage";
 import Layout from "../layout/Layout";
 import { PlanProvider } from "../context/PlanContext";
+import CreatePlanPage from "../pages/CreatePlanPage";
 
 const MyRoutes = () => {
   return (
@@ -17,6 +18,14 @@ const MyRoutes = () => {
             element={
               <Layout>
                 <HomePage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/createPlan"
+            element={
+              <Layout>
+                <CreatePlanPage />
               </Layout>
             }
           />
