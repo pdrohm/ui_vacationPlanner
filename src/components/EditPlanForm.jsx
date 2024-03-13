@@ -7,6 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import { LiaCalendar } from "react-icons/lia";
 import { TfiLocationPin } from "react-icons/tfi";
 import PlanContext from "../context/PlanContext";
+import ActionsButton from "./ActionsButton";
 
 const EditPlanForm = () => {
   const { editPlan, selectedPlan: plan } = useContext(PlanContext);
@@ -97,7 +98,10 @@ const EditPlanForm = () => {
         {errors.location && <span>Field location is required</span>}
       </div>
 
-      <div className="flex justify-end">
+      <div className="mb-2 flex justify-between">
+        <div className="flex ">
+          <ActionsButton plan={plan} />
+        </div>
         <button type="submit" className="btn">
           Update Plan
         </button>
