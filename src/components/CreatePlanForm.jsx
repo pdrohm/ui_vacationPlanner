@@ -82,12 +82,15 @@ const CreatePlanForm = () => {
         />
       </div>
 
-      <ParticipantsInput
-        control={control}
-        selectedOptions={selectedOptions}
-        setSelectedOptions={setSelectedOptions}
-        ref={selectInputRef}
-      />
+      <div>
+        <label htmlFor="participants">Participants:</label>
+        <ParticipantsInput
+          control={control}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
+          ref={selectInputRef}
+        />
+      </div>
 
       <button type="submit" className="btn">
         Add Plan
