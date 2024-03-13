@@ -29,7 +29,7 @@ const Card = ({ plan }) => {
       <div>
         <img
           src={imageUrl}
-          alt="Imagem"
+          alt="Planned Trip Image choosen by user"
           className="w-full rounded-md hover:scale-105"
         />
         <CardFloatingButton plan={plan} />

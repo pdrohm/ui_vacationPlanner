@@ -16,6 +16,7 @@ const CardFloatingButton = ({ plan }) => {
       <button
         className="absolute bottom-2 right-2 rounded-full bg-black/80 p-2 font-bold text-white hover:bg-primary"
         onClick={toggleMenu}
+        aria-label="Open actions menu"
       >
         <BsThreeDots />
       </button>

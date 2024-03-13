@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-import { IoMdClose } from "react-icons/io";
 import { LiaCalendar } from "react-icons/lia";
 import { TfiLocationPin } from "react-icons/tfi";
 import PlanContext from "../context/PlanContext";

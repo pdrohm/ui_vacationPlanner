@@ -7,15 +7,15 @@ const Header = () => {
   return (
     <div className="flex h-16 w-screen items-center justify-between border-b px-5 md:px-20">
       <span
-        className="cursor-pointer text-2xl font-semibold text-primary lg:text-4xl"
+        className="cursor-pointer text-2xl font-semibold text-black  underline decoration-primary lg:text-4xl"
         onClick={() => navigate("/")}
       >
-        Vacation planner
+        Vacation Planner
       </span>
       <div className="container-data ml-20 w-12">
         <img
           src={defaultAvatar}
-          alt="Preview"
+          alt="Preview Avatar profile"
           className="h-full w-full rounded-full"
         />
       </div>
