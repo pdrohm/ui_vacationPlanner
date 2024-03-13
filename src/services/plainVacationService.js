@@ -55,24 +55,6 @@ const plainVacationService = {
       throw error;
     }
   },
-  generatePdfPlan: async (planId, planData) => {
-    try {
-      const response = await httpClient.post(
-        `/vacation-plans/${planId}/pdf`,
-        planData,
-        {
-          responseType: "blob",
-        },
-      );
-
-      console.log(`response`, response);
-      return response;
-    } catch (error) {
-      toast.error("Error generating pdf vacation:", error);
-      console.error("Error generating pdf vacation:", error);
-      throw error;
-    }
-  },
 };
 
 export default plainVacationService;

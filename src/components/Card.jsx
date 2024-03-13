@@ -36,7 +36,6 @@ const Card = ({ plan }) => {
       </div>
 
       <h2 className=" text-lg hover:opacity-80">{plan.title}</h2>
-      <p>{plan.description}</p>
       <div className="flex gap-x-1">
         <p className="text-sm text-gray-600">{startFormattedDate}</p>-
         <p className="text-sm text-gray-600">{endFormattedDate}</p>

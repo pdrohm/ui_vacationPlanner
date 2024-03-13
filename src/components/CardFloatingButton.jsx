@@ -6,10 +6,14 @@ import { FaRegFilePdf } from "react-icons/fa6";
 import PlanContext from "../context/PlanContext";
 import plainVacationService from "../services/plainVacationService";
 import { useNavigate } from "react-router-dom";
+import jsPDF from "jspdf";
+import usePdf from "../hooks/usePdf";
 
 const CardFloatingButton = ({ plan }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+
+  const { generatePDF } = usePdf();
 
   const { deletePlan } = useContext(PlanContext);
 
@@ -22,9 +26,19 @@ const CardFloatingButton = ({ plan }) => {
     try {
       event.stopPropagation();
 
-      const pdf = await plainVacationService.generatePdfPlan(plan.id, plan);
-      console.log(`pdf`, pdf.data);
-      navigate(`/pdf`, { state: { pdf: pdf.data } });
+      const planData = {
+        title: plan.title,
+        description: plan.description,
+        startDate: plan.startDate,
+        endDate: plan.endDate,
+      };
+
+      const pdfBlob = await generatePDF(planData);
+
+      const pdfUrl = URL.createObjectURL(pdfBlob);
+
+      window.open(pdfUrl, "_blank");
+      setIsOpen(!isOpen);
     } catch (error) {
       console.error("Error generating PDF:", error);
     }
