@@ -7,8 +7,6 @@ export const PlanProvider = ({ children }) => {
   const [plans, setPlans] = useState([]);
   const [selectedPlan, setSelectedPlan] = useState();
 
-  console.log(`selectedPlan`, selectedPlan);
-
   const fetchPlans = async () => {
     try {
       const plansFetched = await plainVacationService.getAllPlainVacations();

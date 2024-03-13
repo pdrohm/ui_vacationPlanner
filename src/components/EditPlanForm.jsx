@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,23 +7,31 @@ import { LiaCalendar } from "react-icons/lia";
 import { TfiLocationPin } from "react-icons/tfi";
 import PlanContext from "../context/PlanContext";
 import ActionsButton from "./ActionsButton";
+import ParticipantsInput from "./ParticipantsInput";
 
 const EditPlanForm = () => {
   const { editPlan, selectedPlan: plan } = useContext(PlanContext);
 
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    watch,
-    formState: { errors },
-  } = useForm();
+  console.log(`plan`, plan);
 
   const [startDate, setStartDate] = useState(new Date(plan.startDate));
   const [endDate, setEndDate] = useState(new Date(plan.endDate));
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
+  const {
+    control,
+    handleSubmit,
+    setValue,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  const selectInputRef = useRef();
 
   const onSubmit = (data) => {
     try {
+      data.participants = selectedOptions.map((option) => option.value);
+
       editPlan(plan.id, data);
     } catch (error) {
       console.log("error", error);
@@ -59,14 +67,13 @@ const EditPlanForm = () => {
           endDate={endDate}
           selectsRange
           onChange={(dates) => {
-            // Update the selected start and end dates
             setStartDate(dates[0]);
             setEndDate(dates[1]);
-            // Also update the form values
             setValue("startDate", dates[0]);
             setValue("endDate", dates[1]);
           }}
           dateFormat="dd MMM yyyy"
+          className="p-2"
         />
       </div>
 
@@ -82,12 +89,17 @@ const EditPlanForm = () => {
       </div>
 
       <div className="p-2">
-        <input
-          id="participants"
-          type="text"
-          defaultValue={plan.participants}
-          {...register("participants")}
-        />
+        <div className="flex items-center gap-x-4">
+          <label htmlFor="participants">Participants:</label>
+          <ParticipantsInput
+            control={control}
+            selectedOptions={selectedOptions}
+            setSelectedOptions={setSelectedOptions}
+            ref={selectInputRef}
+          />
+        </div>
+
+        <div className="w-1/2"></div>
       </div>
 
       <div className="border-none text-red-600">
