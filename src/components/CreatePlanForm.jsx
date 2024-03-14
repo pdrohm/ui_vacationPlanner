@@ -7,9 +7,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import ParticipantsInput from "./ParticipantsInput";
 import { useNavigate } from "react-router-dom";
 
+import { TfiLocationPin } from "react-icons/tfi";
+import { LiaCalendar } from "react-icons/lia";
+
 const CreatePlanForm = () => {
-  const [dateRange, setDateRange] = useState([null, null]);
-  const [startDate, endDate] = dateRange;
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const selectInputRef = useRef();
@@ -47,7 +48,7 @@ const CreatePlanForm = () => {
   return (
     <div className="w-2/3 lg:w-1/5">
       <form onSubmit={handleSubmit(onSubmit)} className="plan-form">
-        <div>
+        <div className="container">
           <label htmlFor="title">Title:</label>
           <input
             id="title"
@@ -56,7 +57,7 @@ const CreatePlanForm = () => {
           />
         </div>
 
-        <div>
+        <div className="container">
           <label htmlFor="description">Description:</label>
           <textarea
             id="description"
@@ -64,13 +65,13 @@ const CreatePlanForm = () => {
             className="w-full"
           />
         </div>
-
-        <div>
-          <label htmlFor="rangeDate">Date Range:</label>
+        <div className="container flex items-center">
+          <LiaCalendar />
+          <label>Date</label>
           <ReactDatePicker
             startDate={watch("startDate", null)}
             endDate={watch("endDate", null)}
-            selectsRange={true}
+            selectsRange
             onChange={(dates) => {
               setValue("startDate", dates[0]);
               setValue("endDate", dates[1]);
@@ -79,8 +80,9 @@ const CreatePlanForm = () => {
           />
         </div>
 
-        <div>
+        <div className="container">
           <label htmlFor="location">Location:</label>
+
           <input
             id="location"
             type="text"
@@ -88,7 +90,7 @@ const CreatePlanForm = () => {
           />
         </div>
 
-        <div>
+        <div className="container">
           <label htmlFor="participants">Participants:</label>
           <ParticipantsInput
             control={control}

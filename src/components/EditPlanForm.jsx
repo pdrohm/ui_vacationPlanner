@@ -48,7 +48,10 @@ const EditPlanForm = () => {
   }, [plan]);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="plan w-full ">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="plan w-full px-5 lg:px-2"
+    >
       <div>
         <input
           id="title"
@@ -117,7 +120,7 @@ const EditPlanForm = () => {
         {errors.location && <span>Field location is required</span>}
       </div>
 
-      <div className="mb-2 flex justify-between px-4 ">
+      <div className="my-6 flex justify-between px-4 ">
         <div className="flex ">
           <ActionsButton plan={plan} editScreen />
         </div>

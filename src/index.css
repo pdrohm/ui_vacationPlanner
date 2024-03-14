@@ -5,12 +5,12 @@
 .plan-form {
   @apply flex flex-col gap-y-10;
 
-  div {
-    @apply rounded-md border;
+  .container {
+    @apply rounded-md border px-2;
   }
 
   label {
-    @apply pointer-events-none absolute -translate-y-5 text-sm font-bold text-black;
+    @apply pointer-events-none  text-sm font-bold text-black;
   }
   input {
     @apply border-none px-3 py-2 focus:outline-none;
@@ -30,7 +30,6 @@
 
 .react-tagsinput {
   background-color: #fff;
-  border: 1px solid #ccc;
   overflow: hidden;
   padding-left: 5px;
   padding-top: 5px;
