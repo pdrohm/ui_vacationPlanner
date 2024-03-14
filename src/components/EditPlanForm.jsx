@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import ReactDatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -26,8 +26,6 @@ const EditPlanForm = () => {
     formState: { errors },
   } = useForm();
 
-  const selectInputRef = useRef();
-
   const onSubmit = (data) => {
     try {
       data.participants = selectedOptions.map((option) => option.value);
@@ -37,6 +35,17 @@ const EditPlanForm = () => {
       console.log("error", error);
     }
   };
+
+  useEffect(() => {
+    if (plan.participants) {
+      setSelectedOptions(
+        plan.participants.map((participant) => ({
+          value: participant,
+          label: participant,
+        })),
+      );
+    }
+  }, [plan]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="plan w-full ">
@@ -95,7 +104,6 @@ const EditPlanForm = () => {
             control={control}
             selectedOptions={selectedOptions}
             setSelectedOptions={setSelectedOptions}
-            ref={selectInputRef}
           />
         </div>
 

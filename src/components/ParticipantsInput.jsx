@@ -1,32 +1,14 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Controller } from "react-hook-form";
-import Select from "react-select";
+import TagsInput from "react-tagsinput";
 
 const ParticipantsInput = ({
   control,
   selectedOptions,
   setSelectedOptions,
 }) => {
-  const [inputValue, setInputValue] = useState("");
-
-  const selectInputRef = useRef();
-
-  const handleInputChange = (newValue) => {
-    setInputValue(newValue);
-  };
-
-  const handleKeyDown = (event) => {
-    if (!event.target.value) return;
-
-    if (event.key === "Enter") {
-      event.preventDefault();
-      const newOption = {
-        label: event.target.value,
-        value: event.target.value,
-      };
-      setSelectedOptions([...selectedOptions, newOption]);
-      setInputValue("");
-    }
+  const handleChange = (tags) => {
+    setSelectedOptions(tags.map((tag) => ({ value: tag, label: tag })));
   };
 
   return (
@@ -35,16 +17,14 @@ const ParticipantsInput = ({
         name="participants"
         control={control}
         render={({ field }) => (
-          <Select
-            ref={selectInputRef}
-            id="participants"
-            isMulti
-            inputValue={inputValue}
-            onInputChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            options={selectedOptions}
-            placeholder="Type and hit enter"
-            className="lg:w-96"
+          <TagsInput
+            value={selectedOptions.map((option) => option.value)}
+            onChange={handleChange}
+            inputProps={{ placeholder: "Type and hit enter" }}
+            className="react-tagsinput"
+            tagProps={{
+              className: "react-tagsinput-tag",
+            }}
           />
         )}
       />
