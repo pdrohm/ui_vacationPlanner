@@ -65,7 +65,7 @@ const CreatePlanForm = () => {
             className="w-full"
           />
         </div>
-        <div className="container flex">
+        <div className="container">
           <LiaCalendar />
           <label>Date</label>
           <ReactDatePicker
@@ -77,6 +77,7 @@ const CreatePlanForm = () => {
               setValue("endDate", dates[1]);
             }}
             dateFormat="dd MMM yyyy"
+            className="w-44 lg:w-60"
           />
         </div>
 
