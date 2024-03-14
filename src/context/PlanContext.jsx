@@ -5,7 +5,7 @@ const PlanContext = createContext();
 
 export const PlanProvider = ({ children }) => {
   const [plans, setPlans] = useState([]);
-  const [selectedPlan, setSelectedPlan] = useState();
+  const [singlePlan, setSinglePlan] = useState();
   const [loading, setLoading] = useState(true);
 
   const fetchPlans = async () => {
@@ -35,8 +35,6 @@ export const PlanProvider = ({ children }) => {
         plan,
       );
 
-      setSelectedPlan(updatedPlan);
-
       fetchPlans();
     } catch (error) {
       console.error("Error adding plan:", error);
@@ -46,6 +44,19 @@ export const PlanProvider = ({ children }) => {
   const deletePlan = async (id) => {
     try {
       await plainVacationService.deletePlainVacation(id);
+
+      fetchPlans();
+    } catch (error) {
+      console.error("Error adding plan:", error);
+    }
+  };
+
+  const getPlanById = async (id) => {
+    console.log("PASOSU");
+    try {
+      const plan = await plainVacationService.getPlainById(id);
+
+      setSinglePlan(plan);
 
       fetchPlans();
     } catch (error) {
@@ -64,10 +75,10 @@ export const PlanProvider = ({ children }) => {
         fetchPlans,
         addPlan,
         editPlan,
-        selectedPlan,
-        setSelectedPlan,
         deletePlan,
         loading,
+        getPlanById,
+        singlePlan,
       }}
     >
       {children}

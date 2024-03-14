@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { TfiLocationPin } from "react-icons/tfi";
 import { LiaCalendar } from "react-icons/lia";
 import { IoIosPeople } from "react-icons/io";
+import LocationAutocomplete from "./LocationAutocomplete";
 
 const CreatePlanForm = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -29,6 +30,7 @@ const CreatePlanForm = () => {
 
   const onSubmit = async (data) => {
     try {
+      console.log(data);
       data.participants = selectedOptions.map((option) => option.value);
       await addPlan(data);
       afterSubmit();
@@ -77,16 +79,10 @@ const CreatePlanForm = () => {
             className="w-44 lg:w-60"
           />
         </div>
-
         <div className="container">
           <TfiLocationPin />
           <label htmlFor="location">Location:</label>
-
-          <input
-            id="location"
-            type="text"
-            {...register("location", { required: true })}
-          />
+          <LocationAutocomplete control={control} />
         </div>
 
         <div className="container">

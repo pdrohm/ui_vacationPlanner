@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { format, parseISO } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import PlanContext from "../context/PlanContext";
@@ -8,7 +8,6 @@ import CardFloatingButton from "./CardFloatingButton";
 import imageUrl from "/defaultCover.webp";
 
 const Card = ({ plan }) => {
-  const { setSelectedPlan } = useContext(PlanContext);
   const startDate = parseISO(plan.startDate);
   const endDate = parseISO(plan.endDate);
 
@@ -16,9 +15,10 @@ const Card = ({ plan }) => {
   const endFormattedDate = format(endDate, "MMM dd yy");
 
   const navigate = useNavigate();
+  const { getPlanById } = useContext(PlanContext);
 
-  const handleCardClick = (plan) => {
-    setSelectedPlan(plan);
+  const handleCardClick = async (plan) => {
+    await getPlanById(plan.id);
     navigate(`/plan/${plan.id}`);
   };
 

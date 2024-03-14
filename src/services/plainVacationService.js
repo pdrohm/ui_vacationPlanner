@@ -55,6 +55,17 @@ const plainVacationService = {
       throw error;
     }
   },
+
+  getPlainById: async (id) => {
+    try {
+      const response = await httpClient.get(`/vacation-plans/${id}`);
+
+      return response.data;
+    } catch (error) {
+      console.error("Error getting plain vacation:", error);
+      throw error;
+    }
+  },
 };
 
 export default plainVacationService;

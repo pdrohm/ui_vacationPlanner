@@ -10,9 +10,10 @@ import { IoIosPeople } from "react-icons/io";
 import PlanContext from "../context/PlanContext";
 import ActionsButton from "./ActionsButton";
 import ParticipantsInput from "./ParticipantsInput";
+import LocationAutocomplete from "./LocationAutocomplete";
 
-const EditPlanForm = () => {
-  const { editPlan, selectedPlan: plan } = useContext(PlanContext);
+const EditPlanForm = ({ plan }) => {
+  const { editPlan } = useContext(PlanContext);
 
   const [startDate, setStartDate] = useState(new Date(plan.startDate));
   const [endDate, setEndDate] = useState(new Date(plan.endDate));
@@ -26,11 +27,11 @@ const EditPlanForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     try {
       data.participants = selectedOptions.map((option) => option.value);
 
-      editPlan(plan.id, data);
+      await editPlan(plan.id, data);
     } catch (error) {
       console.log("error", error);
     }
@@ -91,13 +92,13 @@ const EditPlanForm = () => {
 
       <div className="flex items-center gap-x-2 p-2">
         <TfiLocationPin />
-
-        <input
-          id="location"
-          type="text"
-          defaultValue={plan.location}
-          {...register("location", { required: true })}
-        />
+        <div className="w-1/2">
+          <LocationAutocomplete
+            control={control}
+            defaultValue={plan.location}
+            setValue={setValue}
+          />
+        </div>
       </div>
 
       <div className="p-2">
