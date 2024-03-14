@@ -6,6 +6,7 @@ const ParticipantsInput = ({
   control,
   selectedOptions,
   setSelectedOptions,
+  ref,
 }) => {
   const handleChange = (tags) => {
     setSelectedOptions(tags.map((tag) => ({ value: tag, label: tag })));
@@ -18,6 +19,7 @@ const ParticipantsInput = ({
         control={control}
         render={({ field }) => (
           <TagsInput
+            ref={ref}
             value={selectedOptions.map((option) => option.value)}
             onChange={handleChange}
             inputProps={{ placeholder: "Type and hit enter" }}
