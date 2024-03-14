@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { LiaCalendar } from "react-icons/lia";
 import { TfiLocationPin } from "react-icons/tfi";
+import { IoIosPeople } from "react-icons/io";
+
 import PlanContext from "../context/PlanContext";
 import ActionsButton from "./ActionsButton";
 import ParticipantsInput from "./ParticipantsInput";
@@ -101,7 +103,8 @@ const EditPlanForm = () => {
       </div>
 
       <div className="p-2">
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center gap-x-2">
+          <IoIosPeople />
           <label htmlFor="participants">Participants:</label>
           <ParticipantsInput
             control={control}

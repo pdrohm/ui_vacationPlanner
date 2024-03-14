@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 import { TfiLocationPin } from "react-icons/tfi";
 import { LiaCalendar } from "react-icons/lia";
+import { IoIosPeople } from "react-icons/io";
 
 const CreatePlanForm = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
@@ -65,7 +66,7 @@ const CreatePlanForm = () => {
             className="w-full"
           />
         </div>
-        <div className="container flex items-center">
+        <div className="container flex">
           <LiaCalendar />
           <label>Date</label>
           <ReactDatePicker
@@ -81,6 +82,7 @@ const CreatePlanForm = () => {
         </div>
 
         <div className="container">
+          <TfiLocationPin />
           <label htmlFor="location">Location:</label>
 
           <input
@@ -91,6 +93,7 @@ const CreatePlanForm = () => {
         </div>
 
         <div className="container">
+          <IoIosPeople />
           <label htmlFor="participants">Participants:</label>
           <ParticipantsInput
             control={control}
