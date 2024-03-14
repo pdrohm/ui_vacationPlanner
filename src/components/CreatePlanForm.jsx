@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 
 import PlanContext from "../context/PlanContext";
@@ -13,8 +13,6 @@ import { IoIosPeople } from "react-icons/io";
 
 const CreatePlanForm = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
-
-  const selectInputRef = useRef();
 
   const navigate = useNavigate();
 
@@ -42,7 +40,6 @@ const CreatePlanForm = () => {
 
   const afterSubmit = () => {
     reset();
-    selectInputRef.current.clearValue();
   };
 
   return (
@@ -99,7 +96,6 @@ const CreatePlanForm = () => {
             control={control}
             selectedOptions={selectedOptions}
             setSelectedOptions={setSelectedOptions}
-            ref={selectInputRef}
           />
         </div>
 
