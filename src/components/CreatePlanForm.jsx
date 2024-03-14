@@ -32,7 +32,6 @@ const CreatePlanForm = () => {
   const onSubmit = async (data) => {
     try {
       data.participants = selectedOptions.map((option) => option.value);
-      console.log(data);
       await addPlan(data);
       afterSubmit();
     } catch (error) {

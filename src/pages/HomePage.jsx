@@ -7,8 +7,6 @@ import { Helmet } from "react-helmet";
 const HomePage = () => {
   const { plans, loading } = useContext(PlanContext);
 
-  console.log(loading);
-
   const navigate = useNavigate();
 
   const handleCreatePlanClick = () => {

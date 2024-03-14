@@ -14,8 +14,6 @@ import ParticipantsInput from "./ParticipantsInput";
 const EditPlanForm = () => {
   const { editPlan, selectedPlan: plan } = useContext(PlanContext);
 
-  console.log(`plan`, plan);
-
   const [startDate, setStartDate] = useState(new Date(plan.startDate));
   const [endDate, setEndDate] = useState(new Date(plan.endDate));
   const [selectedOptions, setSelectedOptions] = useState([]);

@@ -42,7 +42,6 @@ const usePdf = () => {
   };
 
   const generatePDF = async (plan) => {
-    console.log(`plan`, plan);
     try {
       const doc = new jsPDF();
       const participants = Array.isArray(plan.participants)
