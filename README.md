@@ -32,9 +32,11 @@ Start the development server with hot module replacement (HMR) for real-time cod
 
 - yarn dev
 
-##### Production Build (recommended):
+- follow the instructions of api read.me (must run api)
 
-Generate a production build of your project:
+##### Production Build (recommended to test the lighthouse):
+
+Generate a production build of your project, recommended to test the lighthouse although the API wont work properly (build a static site):
 
 - yarn build
 
